@@ -9,7 +9,7 @@ import { toggleSidebar, setCategory, setSearchSuggestion } from "../utils/appSli
 import { useState } from "react";
 import { SEARCH_SUGGESTIONS_API } from "../constant/youtube";
 import axios from "axios";
-
+ 
 const Navbar = () => {
     const [input, setInput] = useState("");
     const [suggestion, setSuggestion] = useState(false);
@@ -26,13 +26,16 @@ const Navbar = () => {
     }
 
     const showSuggestion = async () => {
-        try {
+try {
             const res = await axios.get(SEARCH_SUGGESTIONS_API + input);
-            dispatch(setSearchSuggestion(res?.data[1]))
+            console.log(res.data);
+           dispatch(setSearchSuggestion(res?.data[1]))
         } catch (error) {
             console.log(error);
         }
-    }
+    
+
+ }
 
     const openSuggestion = () => {
         setSuggestion(true);
@@ -55,11 +58,11 @@ const Navbar = () => {
 
                 <div className="flex items-center ">
                     <GiHamburgerMenu onClick={toggleHandler} size="24px" className="cursor-pointer" />
-                    <img className="px-4" width={"115px"} src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/768px-YouTube_Logo_2017.svg.png" alt="yt_logo" />
+                    <img className="px-4" width={"115px"} src="https://imgs.search.brave.com/yY6jYdzRyQmLGSJVa5B-Aqpm65zKLDWQUEAp_hKY9tQ/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9sb2dv/cy50ZXh0Z2lyYWZm/ZS5jb20vbG9nb3Mv/bG9nby1uYW1lL0lr/YmFsLWRlc2lnbnN0/eWxlLWtpZGRvLW0u/cG5n" alt="yt_logo" />
                 </div>
                 <div className="flex w-[40%] items-center">
                     <div className="flex w-[100%] ">
-                        <input value={input} onFocus={openSuggestion} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Search" className="w-full py-2 px-4 border border-gray-400 rounded-l-full outline-none" />
+                        <input value={input} onFocus={openSuggestion} onChange={(e) => setInput(e.target.value)} type="text" placeholder="Built by Riaj Ikbal" className="w-full py-2 px-4 border border-gray-400 rounded-l-full outline-none" />
                         <button onClick={searchVideo} className="py-2 border border-gray-400 rounded-r-full px-4"><CiSearch size="24px" /></button>
                     </div>
                     {
@@ -87,7 +90,7 @@ const Navbar = () => {
                 <div className="flex w-[10%] justify-between items-center">
                     <IoIosNotificationsOutline size={"24px"} className="cursor-pointer" />
                     <CiVideoOn size={"24px"} className="cursor-pointer" />
-                    <Avatar src="https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw" size={35} round={true} />
+                    <Avatar src="https://images.pexels.com/photos/48155/animal-owl-eagle-owl-wisdom-48155.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" size={50} round={true} />
                 </div>
 
             </div>
